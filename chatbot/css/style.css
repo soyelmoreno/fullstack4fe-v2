@@ -2,6 +2,12 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
 .input-box {
   font-size: 1.5rem;
   width: 400px;
