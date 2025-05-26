@@ -447,7 +447,7 @@ Back to Nginx
 
     domain ---> IP ---> Nginx --?-> Express
 
-Back to the location box:
+Modify the location block:
 
     location / {
       proxy_pass URL_TO_PROXY_TO;
@@ -521,8 +521,10 @@ Git:
 3. Add SSH key to Github
 4. Add remote repo
 
+   ```
    $ git remote add origin https://github.com/OWNER/REPOSITORY.git
-   $ git remove -v
+   $ git remote -v
+   ```
 
 5. Push local repository to Github
 

@@ -14,6 +14,10 @@ try {
   // Local dev
   if (["localhost", "127.0.0.1", ""].includes(location.hostname)) {
     ws = new WebSocket(`ws://localhost:3000/chatbot`);
+    // Prod
+  } else if (location.hostname.includes("cmoreno.me")) {
+    ws = new WebSocket(`ws://${location.hostname}:3000/chatbot`);
+    // Error
   } else {
     ws = new WebSocket(`wss://jemisthe.best`);
   }
