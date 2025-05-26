@@ -1,0 +1,14 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.input-box {
+  font-size: 1.5rem;
+  width: 400px;
+  padding: 0.5rem;
+}
+
+.output {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
