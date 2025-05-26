@@ -222,10 +222,10 @@ Visit www.namecheap.com . Choose a domain name. Buy it.
 
 "CNAME": Maps name to name
 
+```
 www.jemyoung.com ---> 23.23.185.61
 blog.jemyoung.com ---> 23.23.185.61
 
-```
 $ dig blog.jemyoung.com
 blog.jemyoung     CNAME   jemyoung.com
 jemyoung.com      A       23.23.185.61
@@ -330,10 +330,12 @@ Once started, navigate to your domain name in a browser. Should see this:
 
 ```
 Welcome to nginx!
-If you see this page, the nginx web server is successfully installed and working. Further configuration is required.
 
-For online documentation and support please refer to nginx.org.
-Commercial support is available at nginx.com.
+If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.
+
+For online documentation and support please refer to nginx.org. Commercial
+support is available at nginx.com.
 
 Thank you for using nginx.
 ```
