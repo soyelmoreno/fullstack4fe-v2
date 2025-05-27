@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 // Set up routes and response
 const response = [
   "Hello, world!",
-  "This is our NodeJS application server.",
+  "This is our wonderful NodeJS application server.",
   'Oh, and check out the simple <a href="/chatbot">chatbot app</a>, too.',
 ];
 
