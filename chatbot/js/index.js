@@ -1,6 +1,9 @@
 const webSocketOutput = document.querySelector(".output");
 const inputBtn = document.querySelector(".input-box");
 
+// Get the port from the hidden field
+const serverPort = document.getElementById("serverPort").value;
+
 inputBtn.addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
     const query = event.target.value;
@@ -13,10 +16,10 @@ let ws;
 try {
   // Local dev
   if (["localhost", "127.0.0.1", ""].includes(location.hostname)) {
-    ws = new WebSocket(`ws://localhost:3000/chatbot`);
+    ws = new WebSocket(`ws://localhost:${serverPort}/chatbot`);
     // Prod
   } else if (location.hostname.includes("cmoreno.me")) {
-    ws = new WebSocket(`ws://${location.hostname}:3000/chatbot`);
+    ws = new WebSocket(`ws://${location.hostname}:${serverPort}/chatbot`);
     // Error
   } else {
     ws = new WebSocket(`wss://jemisthe.best`);

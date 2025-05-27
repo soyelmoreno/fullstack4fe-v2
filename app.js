@@ -1,9 +1,10 @@
 const express = require("express");
 const path = require("path");
 const WebSocketServer = require("ws").Server;
+const fs = require("fs");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Set up routes and response
 const response = [
@@ -24,7 +25,15 @@ app.use("/css", express.static(path.join(__dirname, "chatbot/css/")));
 
 // Chatbot route
 app.get("/chatbot", (req, res) => {
-  res.sendFile(path.join(__dirname, "chatbot/html/index.html"));
+  // Get the file, then replace the placeholder with the port
+  fs.readFile("chatbot/html/index.html", "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading file:", err);
+      return;
+    }
+    const modifiedHtml = data.replace("REPLACE_WITH_PORT", PORT);
+    res.send(modifiedHtml);
+  });
 });
 
 function handleQuery(query, cb) {
