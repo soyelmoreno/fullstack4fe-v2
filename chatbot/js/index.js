@@ -13,13 +13,14 @@ inputBtn.addEventListener("keyup", function (event) {
 });
 
 let ws;
+const host = location.hostname;
 try {
   // Local dev
-  if (["localhost", "127.0.0.1", ""].includes(location.hostname)) {
+  if (["hello.localhost", "localhost", "127.0.0.1", ""].includes(host)) {
     ws = new WebSocket(`ws://localhost:${serverPort}/chatbot`);
     // Prod
-  } else if (location.hostname.includes("cmoreno.me")) {
-    ws = new WebSocket(`ws://${location.hostname}:${serverPort}/chatbot`);
+  } else if (host.includes("cmoreno.me")) {
+    ws = new WebSocket(`ws://${host}:${serverPort}/chatbot`);
     // Error
   } else {
     ws = new WebSocket(`wss://jemisthe.best`);
