@@ -7,7 +7,7 @@ if (!process.env.PM2_NAME) {
 module.exports = {
   apps: [
     {
-      name: process.env.PM2_NAME,
+      name: process.env.PM2_NAME || "HelloApp",
       script: "app.js",
       watch: true,
       env: {

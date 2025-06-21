@@ -1,10 +1,12 @@
 const express = require("express");
+const dotenv = require("dotenv");
 const path = require("path");
 const WebSocketServer = require("ws").Server;
 const fs = require("fs");
 
-const app = express();
+dotenv.config();
 const PORT = process.env.PORT || 3000;
+const app = express();
 
 // Express app will sit behind an Nginx reverse proxy. Since Express apps don’t
 // automatically trust reverse proxies, we must set `trust proxy` to true.
