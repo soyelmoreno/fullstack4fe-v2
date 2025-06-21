@@ -49,8 +49,8 @@ function handleQuery(query, cb) {
 }
 
 // Listen
-const httpServer = app.listen(PORT, () =>
-  console.log(`Example app listening on port ${PORT}`)
+const httpServer = app.listen(PORT, "127.0.0.1", () =>
+  console.log(`Example app listening on http://127.0.0.1:${PORT}`)
 );
 
 // Set up WebSocket
