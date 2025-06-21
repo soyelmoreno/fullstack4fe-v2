@@ -6,6 +6,12 @@ const fs = require("fs");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Express app will sit behind an Nginx reverse proxy. Since Express apps don’t
+// automatically trust reverse proxies, we must set `trust proxy` to true.
+// Otherwise, things like req.ip, req.protocol, etc. might not work as expected
+// behind Nginx.
+app.set("trust proxy", true);
+
 // Set up routes and response
 const response = [
   "Hello, world!",
