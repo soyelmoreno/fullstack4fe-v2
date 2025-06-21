@@ -24,13 +24,3 @@ the course "Full Stack for Front-End Engineers v2".
 
 I put it in this repo along with the super basic Hello World app server. I also
 added a few styles.
-
-## Practice using Nginx as a load balancer
-
-I found a video tutorial on configuring Nginx as a load balancer for multiple
-application servers. While I don't foresee the need for Dockerized app instances
-for small projects, it was a good use case for the tutorial, and I learned a lot
-about Nginx configurations.
-
-I didn't want to put my notes in a separate repo, so [they are in this
-repo](nginx/README.md).
