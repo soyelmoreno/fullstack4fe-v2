@@ -20,6 +20,18 @@ $commands = array(
 );
 
 $logfile = realpath(__DIR__ . '/../logs/deploy.log');
+// If file does not exist, establish the path to create the file
+if ($logfile === false) {
+  $logfile = __DIR__ . '/../logs/deploy.log';
+}
+// Ensure the file or its parent directory is writable
+if (!is_writable(dirname($logfile))) {
+  $notWritableMsg = 'Log directory is not writable.';
+  $clientIp = $_SERVER['REMOTE_ADDR'] ?? 'unknown IP';
+  error_log("Deploy script error from $clientIp: $notWritableMsg");
+  http_response_code(500);
+  exit($notWritableMsg);
+}
 $date = new DateTime();
 $formattedDate = $date->format('Y-m-d\TH:i:s');
 file_put_contents($logfile, "=== Deploy @ " . $formattedDate . " ===\n", FILE_APPEND);
