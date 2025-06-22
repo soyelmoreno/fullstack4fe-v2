@@ -19,10 +19,18 @@ $commands = array(
   // 'git submodule status',
 );
 
+$logfile = realpath(__DIR__ . '/../logs/deploy.log');
+$date = new DateTime();
+$formattedDate = $date->format('Y-m-d\TH:i:s');
+file_put_contents($logfile, "=== Deploy @ " . $formattedDate . " ===\n", FILE_APPEND);
+
 // exec commands
 $output = '';
 foreach ($commands as $command) {
-  $tmp = shell_exec($command);
+  // $tmp = shell_exec($command);
+  // Print any errors also
+  $tmp = shell_exec("$command 2>&1");
+  file_put_contents($logfile, "\$ $command\n$tmp\n", FILE_APPEND);
 
   $output .= "<span class='prompt'>\$</span><span class='command'>{$command}\n</span><br>";
   $output .= htmlentities(trim($tmp)) . "\n<br><br>";
