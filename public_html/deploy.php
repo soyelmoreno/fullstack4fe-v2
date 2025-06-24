@@ -1,4 +1,23 @@
 <?php
+require_once __DIR__ . '/../.env.php';
+$payloadContents = file_get_contents('php://input');
+$calculated = 'sha256=' . hash_hmac('sha256', $payloadContents, GITHUB_WEBHOOK_SECRET);
+$event = $_SERVER['HTTP_X_GITHUB_EVENT'] ?? '';
+$signature = $_SERVER['HTTP_X_HUB_SIGNATURE_256'] ?? '';
+
+if ($event !== 'push') {
+  // GitHub's recommended behavior is to ignore the event silently:
+  // 204 = "I got your request, but I have nothing to say."
+  http_response_code(204);
+  // No error log...keep the error logs clean if this occurs
+  exit("Ignored event: $event");
+}
+
+if (!hash_equals($calculated, $signature)) {
+  http_response_code(403);
+  error_log("Webhook signature verification failed.");
+  exit('Invalid signature.');
+}
 
 /**
  * GIT DEPLOYMENT SCRIPT
