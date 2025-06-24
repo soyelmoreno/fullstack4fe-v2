@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 if (!process.env.PM2_NAME) {
-  console.error("⚠️ Missing NAME in .env");
+  console.error("⚠️ Missing PM2_NAME in .env");
   process.exit(1);
 }
 module.exports = {
